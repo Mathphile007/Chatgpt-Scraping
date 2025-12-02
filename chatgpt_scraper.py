@@ -22,7 +22,7 @@ with SB(uc=True, test=True, ad_block=True, headless=True) as sb:
     all_results = []
     
     # 2. Open URL and Activate CDP Mode
-    sb.uc_open_with_reconnect(url, timeout=15)
+    sb.uc_open_with_reconnect(url)
     sb.activate_cdp_mode(url)
     sb.sleep(1)
     
