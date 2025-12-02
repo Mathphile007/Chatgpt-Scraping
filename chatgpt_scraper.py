@@ -24,7 +24,7 @@ with SB(uc=True, test=True, ad_block=True, headless=True) as sb:
     
     # 2. Open URL and Activate CDP Mode
     # FIXED: Removed 'timeout=15' to resolve the TypeError.
-    sb.uc_open_with_reconnect(url)
+    sb.uc_open_with_reconnect(url,reconnect_time=15)
     
     sb.activate_cdp_mode(url)
     sb.sleep(1)
