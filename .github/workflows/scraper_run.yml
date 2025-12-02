@@ -20,14 +20,15 @@ jobs:
           python-version: '3.11'
 
       # Step 3: Install Dependencies (SeleniumBase and Pandas)
-      - name: Install SeleniumBase and Dependencies
+      - name: Install SeleniumBase and Dependencies (FORCE UPGRADE)
         run: |
           python -m pip install --upgrade pip
-          # We install SeleniumBase with the required packages
-          pip install seleniumbase
-          # Since we are running in GHA, we also install the driver explicitly for stability
+          # Force a complete reinstall of the latest SeleniumBase package
+          pip install -U seleniumbase --force-reinstall
+          # Install undetected-chromedriver separately just in case the SB install is incomplete
+          pip install undetected-chromedriver
+          # Install the driver explicitly
           seleniumbase install uc_driver
-          
       # Step 4: Run the Scraper Script
       - name: Execute ChatGPT Scraper
         # The 'run' keyword executes the file we just created
